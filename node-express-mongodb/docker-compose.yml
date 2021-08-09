@@ -1,0 +1,22 @@
+version: '3.8'
+services: 
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        # env_file: ./.env
+        volumes: 
+            - .:/app/
+            - /app/node_modules
+        ports:
+            - "8080:8080"
+        depends_on:     
+            - mongo
+            
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes: 
+          - ./data:/data/db
+        ports: 
+          - "27017:27017" 
