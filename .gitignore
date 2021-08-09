@@ -1,0 +1,7 @@
+./node_modules
+./data
+./bezkoder-frontend/node_modules
+./bezkoder-frontend/data
+./bezkoder-frontend/.nuxt
+./node-express-mongodb/node_modules
+./node-express-mongodb/data

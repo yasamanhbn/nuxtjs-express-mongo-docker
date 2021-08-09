@@ -1,0 +1,32 @@
+version: '3'
+services: 
+    web:
+      build:
+        context: ./node-express-mongodb
+        dockerfile: Dockerfile.dev
+      volumes: 
+        - ./node-express-mongodb:/app
+        - /app/node_modules
+      ports:
+        - "8080:8080"
+      depends_on:     
+        - mongodb
+
+    mongodb:
+      container_name: mongodb
+      image: mongo
+      ports: 
+        - "27017:27017" 
+
+    nuxtjs:
+      build: 
+        context: ./bezkoder-frontend
+        dockerfile: Dockerfile.dev
+      ports: 
+        - "3000:3000"
+      volumes: 
+        - /app/node_modules
+        - ./bezkoder-frontend:/app
+    
+            
+    
