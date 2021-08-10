@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
   head: {
     title: 'bezkoder-frontend',
     htmlAttrs: {
@@ -36,8 +37,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    "@nuxtjs/proxy",
   ],
+  axios: {
+    proxy: true,
+  },
+  proxy: {
+    "/api/" :{
+      target : "http://web:8080"}
+  },
 
   // devModules: ['@nuxtjs/eslint-module'],
 
@@ -45,16 +54,11 @@ export default {
   build: {
   },
 
-
   env:{
-    baseUrl:'http://localhost:8080/api/tutorials'
+    baseUrl:'http://localhost:8080/'
   },
   server:{
     host:"0.0.0.0",
     port:3000
   },
-  axios: {
-    baseURL: 'http://localhost:8080/api/tutorials',
-  },
-  
 }

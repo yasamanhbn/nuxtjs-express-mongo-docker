@@ -37,7 +37,7 @@ export default {
                 description:this.description,
                 published:published}
 
-        this.$axios.post(process.env.baseUrl,post_data)
+        this.$axios.post('/api/tutorials',post_data)
         .then(res=>{
             this.$router.push('/')
 

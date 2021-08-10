@@ -38,7 +38,7 @@ export default {
     },
     methods:{
         searchItem(){
-        this.$axios.get(process.env.baseUrl+'?title='+this.title)
+        this.$axios.get('/api/tutorials?title='+this.title)
         .then(res=>{
             this.$router.push('/'+res.data[0].id)    
             console.log(res)
@@ -49,7 +49,7 @@ export default {
         }
     },
     created(){
-        this.$axios.get(process.env.baseUrl+'/published')
+        this.$axios.get('/api/tutorials/published')
         .then(res=>{
             this.tutorials = res.data
             console.log(res.data)

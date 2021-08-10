@@ -50,7 +50,7 @@ export default {
             let publishedData = {
                 published: true
             }
-            this.$axios.put(process.env.baseUrl + '/' + this.$route.params.id,publishedData)
+            this.$axios.put('/api/tutorials/' + this.$route.params.id,publishedData)
             .then(res=>{
                 this.$router.push('/')
                 console.log(res)
@@ -62,21 +62,21 @@ export default {
                description : this.description,
                published : this.selected_opt == "publish" ? true : false
            }
-            this.$axios.put(process.env.baseUrl + '/' + this.$route.params.id,updatedData)
+            this.$axios.put('/api/tutorials/' + this.$route.params.id,updatedData)
             .then(res=>{
                 this.$router.push('/')
                 console.log(res)
             })
         },
         deleteCourse(){
-            this.$axios.delete(process.env.baseUrl + '/' + this.$route.params.id)
+            this.$axios.delete('/api/tutorials/' + this.$route.params.id)
             .then(res=>{
                 this.$router.push('/')
             })
         }
     },
     created(){
-        this.$axios.get(process.env.baseUrl + '/' + this.$route.params.id)
+        this.$axios.get('/api/tutorials/' + this.$route.params.id)
         .then(res=>{
             this.post_detail = res.data  
             this.title = res.data.title

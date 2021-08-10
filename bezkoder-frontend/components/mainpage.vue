@@ -31,7 +31,7 @@ export default {
           this.$router.push('/'+ post_id)
         },
         removeAll(){
-          this.$axios.delete(process.env.baseUrl)
+          this.$axios.delete('/api/tutorials/')
           .then(res=>{
             console.log(res)
             this.$router.push('/addTutorial')
@@ -39,7 +39,7 @@ export default {
       }
     },
     created(){
-        this.$axios.get(process.env.baseUrl)
+        this.$axios.get('/api/tutorials/')
         .then(res=>{
             this.tutorials = res.data
             console.log(res.data)
